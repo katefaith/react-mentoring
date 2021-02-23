@@ -3,9 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.jsx',
-  output: {
-    path: path.join(__dirname, '/dist'),
-    filename: 'bundle.js',
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
@@ -25,6 +24,22 @@ module.exports = {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.html$/,
+        use: ['html-loader'],
+      },
+      {
+        test: /\.(png|svg|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'images',
+              name: '[name].[ext]',
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [
@@ -32,7 +47,4 @@ module.exports = {
       template: './public/index.html',
     }),
   ],
-  resolve: {
-    extensions: ['.js', '.jsx'],
-  },
 };
