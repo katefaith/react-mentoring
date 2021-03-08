@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Modal } from '../Modal';
 
 import './movieCard.scss';
 
@@ -9,12 +10,14 @@ import closeIcon from '../../images/cancel.svg';
 export const MovieCard = ({ movie }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuBtnShown, setIsMenuBtnShown] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   return (
     <div
       className="movie-card"
       onMouseEnter={() => setIsMenuBtnShown(true)}
-      onMouseLeave={() => setIsMenuBtnShown(false)}
+      onMouseLeave={() => { setIsMenuBtnShown(false); setIsMenuOpen(false); }}
     >
       {isMenuBtnShown && (
         <button
@@ -28,15 +31,11 @@ export const MovieCard = ({ movie }) => {
 
       {isMenuOpen && (
         <div className="movie-card__menu">
-          <button
-            className="movie-card__menu-close-btn"
-            type="button"
-            onClick={() => setIsMenuOpen(false)}
-          >
+          <button className="movie-card__menu-close-btn" type="button" onClick={() => setIsMenuOpen(false)}>
             <img src={closeIcon} alt="close" />
           </button>
-          <button className="movie-card__menu-item" type="button">Edit</button>
-          <button className="movie-card__menu-item" type="button">Delete</button>
+          <button className="movie-card__menu-item" type="button" onClick={() => { setIsEditModalOpen(true); setIsMenuOpen(false); }}>Edit</button>
+          <button className="movie-card__menu-item" type="button" onClick={() => { setIsDeleteModalOpen(true); setIsMenuOpen(false); }}>Delete</button>
         </div>
       )}
 
@@ -52,6 +51,18 @@ export const MovieCard = ({ movie }) => {
         </div>
         <div className="movie-card__release-date">{movie.year}</div>
       </div>
+
+      {isEditModalOpen && (
+      <Modal setIsModalOpen={setIsEditModalOpen}>
+        edit movie
+      </Modal>
+      )}
+
+      {isDeleteModalOpen && (
+      <Modal setIsModalOpen={setIsDeleteModalOpen}>
+        delete movie
+      </Modal>
+      )}
     </div>
   );
 };

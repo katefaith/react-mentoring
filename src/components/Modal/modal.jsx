@@ -6,7 +6,7 @@ import './modal.scss';
 
 import closeIcon from '../../images/cancel.svg';
 
-export const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
+export const Modal = ({ setIsModalOpen, children }) => {
   const modal = (
     <div className="modal">
       <div className="modal__wrapper">
@@ -24,18 +24,13 @@ export const Modal = ({ isModalOpen, setIsModalOpen, children }) => {
     </div>
   );
 
-  if (isModalOpen) {
-    return ReactDOM.createPortal(
-      modal,
-      document.getElementById('modal-root'),
-    );
-  }
-
-  return null;
+  return ReactDOM.createPortal(
+    modal,
+    document.getElementById('modal-root'),
+  );
 };
 
 Modal.propTypes = {
-  isModalOpen: PropTypes.bool.isRequired,
   setIsModalOpen: PropTypes.func.isRequired,
   children: PropTypes.string.isRequired,
 };
