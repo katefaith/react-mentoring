@@ -1,0 +1,25 @@
+@import "./base/normalize";
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.wrapper {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+}

@@ -1,0 +1,16 @@
+@import './../../sass/abstracts/variables.scss';
+
+.filter {
+    display: flex;
+    margin-left: -10px;
+
+    &__item {
+        margin: 20px 10px;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover {
+            color: $color-primary;
+        }
+    }
+}

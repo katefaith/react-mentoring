@@ -1,0 +1,22 @@
+@import './../../sass/abstracts/variables.scss';
+
+.header {
+    background: linear-gradient(rgba($color-black, 0.6), rgba($color-black, 0.7)), url('../../images/bg.jpg');
+    border-bottom: 10px solid $color-gray-light;
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__add-button {
+        padding: 15px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgba($color-gray-light, 0.8);
+        color: $color-primary;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
