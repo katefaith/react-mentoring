@@ -6,6 +6,9 @@
 
     &__image {
         margin-bottom: 15px;
+        width: 300px;
+        height: 460px;
+        object-fit: fill;
     }
 
     &__info {
