@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { Modal } from '../Modal';
+import { AddForm } from '../Forms/addForm';
 
 import './header.scss';
 
@@ -26,7 +27,7 @@ export const Header = () => {
 
       {isAddModalOpen && (
       <Modal setIsModalOpen={setIsAddModalOpen}>
-        add movie
+        <AddForm />
       </Modal>
       )}
     </header>

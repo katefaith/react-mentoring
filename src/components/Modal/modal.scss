@@ -14,11 +14,11 @@
     &__wrapper {
         position: relative;
         width: 600px;
-        height: 600px;
+        height: fit-content;
         margin-top: 100px;
         margin-bottom: 100px;
         color: $color-white;
-        background-color: $color-gray;
+        background-color: $color-dark;
     }
 
     &__close-btn {

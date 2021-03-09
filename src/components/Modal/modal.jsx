@@ -32,5 +32,5 @@ export const Modal = ({ setIsModalOpen, children }) => {
 
 Modal.propTypes = {
   setIsModalOpen: PropTypes.func.isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.element.isRequired,
 };
