@@ -18,6 +18,11 @@
         background-color: rgba($color-gray, 0.8);
         border: 1px solid $color-gray;
         color: $color-white;
+
+        &[disabled] {
+            background-color: transparent;
+            border: none;
+        }
     }
 
     &__label {

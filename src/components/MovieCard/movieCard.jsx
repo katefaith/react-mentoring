@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
+import { EditForm } from '../Forms/editForm';
 
 import './movieCard.scss';
 
@@ -54,7 +55,7 @@ export const MovieCard = ({ movie }) => {
 
       {isEditModalOpen && (
       <Modal setIsModalOpen={setIsEditModalOpen}>
-        edit movie
+        <EditForm movie={movie} />
       </Modal>
       )}
 
