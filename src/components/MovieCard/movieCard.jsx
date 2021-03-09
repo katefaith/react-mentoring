@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
 import { EditForm } from '../Forms/editForm';
+import { DeleteForm } from '../Forms/deleteForm';
 
 import './movieCard.scss';
 
@@ -61,7 +62,7 @@ export const MovieCard = ({ movie }) => {
 
       {isDeleteModalOpen && (
       <Modal setIsModalOpen={setIsDeleteModalOpen}>
-        delete movie
+        <DeleteForm id={movie.imdbID} />
       </Modal>
       )}
     </div>
@@ -70,6 +71,7 @@ export const MovieCard = ({ movie }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
+    imdbID: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
@@ -79,6 +81,7 @@ MovieCard.propTypes = {
 
 MovieCard.defaultProps = {
   movie: {
+    imdbID: 'Missing ID',
     title: 'Missing Title',
     poster: 'Missing Poster',
     genre: 'Missing Genre',

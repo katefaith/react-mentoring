@@ -12,12 +12,12 @@ export const EditForm = ({ movie }) => (
 
     <div className="form__field">
       <label className="form__label" htmlFor="id">Movie ID</label>
-      <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={movie.imdbID} />
+      <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled defaultValue={movie.imdbID} />
     </div>
 
     <div className="form__field">
       <label className="form__label" htmlFor="title">Title</label>
-      <input className="form__input" type="text" id="title" placeholder="Movie Title" value={movie.title} />
+      <input className="form__input" type="text" id="title" placeholder="Movie Title" defaultValue={movie.title} />
     </div>
 
     <div className="form__field">
@@ -27,7 +27,7 @@ export const EditForm = ({ movie }) => (
 
     <div className="form__field">
       <label className="form__label" htmlFor="url">Movie Url</label>
-      <input className="form__input" type="text" id="url" placeholder="Movie URL here" value={movie.poster} />
+      <input className="form__input" type="text" id="url" placeholder="Movie URL here" defaultValue={movie.poster} />
     </div>
 
     <div className="form__field">
@@ -39,12 +39,12 @@ export const EditForm = ({ movie }) => (
 
     <div className="form__field">
       <label className="form__label" htmlFor="overview">Overview</label>
-      <input className="form__input" type="text" id="overview" placeholder="Overview here" value={movie.plot} />
+      <input className="form__input" type="text" id="overview" placeholder="Overview here" defaultValue={movie.plot} />
     </div>
 
     <div className="form__field">
       <label className="form__label" htmlFor="runtime">Runtime</label>
-      <input className="form__input" type="text" id="runtime" placeholder="Runtime here" value={movie.runtime} />
+      <input className="form__input" type="text" id="runtime" placeholder="Runtime here" defaultValue={movie.runtime} />
     </div>
 
     <div className="form__buttons">
