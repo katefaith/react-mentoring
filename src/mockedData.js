@@ -2,7 +2,7 @@ export const filterItems = ['all', 'documentary', 'comedy', 'horror', 'crime'];
 
 export const sortingItems = ['release date', 'rating'];
 
-export const movies = [
+export const moviesData = [
   {
     title: '500 Days of Summer',
     year: '2009',
