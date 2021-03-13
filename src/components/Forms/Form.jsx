@@ -6,14 +6,18 @@ import './form.scss';
 
 import { filterItems } from '../../mockedData';
 
-export const EditForm = ({ movie }) => (
+export const Form = ({
+  title, movie, id, btnText,
+}) => (
   <form className="form">
-    <h1 className="form__title">Edit movie</h1>
+    <h1 className="form__title">{title}</h1>
 
-    <div className="form__field">
-      <label className="form__label" htmlFor="id">Movie ID</label>
-      <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled defaultValue={movie.imdbID} />
-    </div>
+    {id && (
+      <div className="form__field">
+        <label className="form__label" htmlFor="id">Movie ID</label>
+        <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={id} />
+      </div>
+    )}
 
     <div className="form__field">
       <label className="form__label" htmlFor="title">Title</label>
@@ -49,12 +53,13 @@ export const EditForm = ({ movie }) => (
 
     <div className="form__buttons">
       <button className="form__button  form__button--reset" type="reset">reset</button>
-      <button className="form__button  form__button--submit" type="submit">save</button>
+      <button className="form__button  form__button--submit" type="submit">{btnText}</button>
     </div>
   </form>
 );
 
-EditForm.propTypes = {
+Form.propTypes = {
+  title: PropTypes.string.isRequired,
   movie: PropTypes.shape({
     imdbID: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -63,15 +68,18 @@ EditForm.propTypes = {
     plot: PropTypes.string.isRequired,
     runtime: PropTypes.string.isRequired,
   }),
+  id: PropTypes.string,
+  btnText: PropTypes.string.isRequired,
 };
 
-EditForm.defaultProps = {
+Form.defaultProps = {
   movie: {
-    imdbID: 'Missing ID',
-    title: 'Missing Title',
-    poster: 'Missing Poster',
-    genre: 'Missing Genre',
-    plot: 'Missing Plot',
-    runtime: 'Missing Runtime',
+    imdbID: '',
+    title: '',
+    poster: '',
+    genre: '',
+    plot: '',
+    runtime: '',
   },
+  id: '',
 };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { Modal } from '../Modal';
-import { AddForm } from '../Forms/addForm';
+import { Form } from '../Forms/Form';
 
 import './header.scss';
 
@@ -26,8 +26,8 @@ export const Header = () => {
       </div>
 
       {isAddModalOpen && (
-      <Modal setIsModalOpen={setIsAddModalOpen}>
-        <AddForm />
+      <Modal closeModal={() => setIsAddModalOpen(false)}>
+        <Form title="add movie" btnText="submit" />
       </Modal>
       )}
     </header>

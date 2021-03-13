@@ -6,14 +6,14 @@ import './modal.scss';
 
 import closeIcon from '../../images/cancel.svg';
 
-export const Modal = ({ setIsModalOpen, children }) => {
+export const Modal = ({ closeModal, children }) => {
   const modal = (
     <div className="modal">
       <div className="modal__wrapper">
         <button
           className="modal__close-btn"
           type="button"
-          onClick={() => setIsModalOpen(false)}
+          onClick={closeModal}
         >
           <img src={closeIcon} alt="close" />
         </button>
@@ -31,6 +31,6 @@ export const Modal = ({ setIsModalOpen, children }) => {
 };
 
 Modal.propTypes = {
-  setIsModalOpen: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
   children: PropTypes.element.isRequired,
 };

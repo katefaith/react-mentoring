@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
-import { EditForm } from '../Forms/editForm';
-import { DeleteForm } from '../Forms/deleteForm';
+import { DeleteForm } from '../Forms/DeleteForm';
+import { Form } from '../Forms/Form';
 
 import './movieCard.scss';
 
@@ -15,11 +15,26 @@ export const MovieCard = ({ movie }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
+  const onMouseLeave = () => {
+    setIsMenuBtnShown(false);
+    setIsMenuOpen(false);
+  };
+
+  const showEditModal = () => {
+    setIsEditModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
+  const showDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
   return (
     <div
       className="movie-card"
       onMouseEnter={() => setIsMenuBtnShown(true)}
-      onMouseLeave={() => { setIsMenuBtnShown(false); setIsMenuOpen(false); }}
+      onMouseLeave={onMouseLeave}
     >
       {isMenuBtnShown && (
         <button
@@ -36,8 +51,8 @@ export const MovieCard = ({ movie }) => {
           <button className="movie-card__menu-close-btn" type="button" onClick={() => setIsMenuOpen(false)}>
             <img src={closeIcon} alt="close" />
           </button>
-          <button className="movie-card__menu-item" type="button" onClick={() => { setIsEditModalOpen(true); setIsMenuOpen(false); }}>Edit</button>
-          <button className="movie-card__menu-item" type="button" onClick={() => { setIsDeleteModalOpen(true); setIsMenuOpen(false); }}>Delete</button>
+          <button className="movie-card__menu-item" type="button" onClick={showEditModal}>Edit</button>
+          <button className="movie-card__menu-item" type="button" onClick={showDeleteModal}>Delete</button>
         </div>
       )}
 
@@ -55,13 +70,13 @@ export const MovieCard = ({ movie }) => {
       </div>
 
       {isEditModalOpen && (
-      <Modal setIsModalOpen={setIsEditModalOpen}>
-        <EditForm movie={movie} />
+      <Modal closeModal={() => setIsEditModalOpen(false)}>
+        <Form title="edit movie" movie={movie} btnText="save" />
       </Modal>
       )}
 
       {isDeleteModalOpen && (
-      <Modal setIsModalOpen={setIsDeleteModalOpen}>
+      <Modal closeModal={() => setIsDeleteModalOpen(false)}>
         <DeleteForm id={movie.imdbID} />
       </Modal>
       )}
