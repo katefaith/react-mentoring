@@ -6,15 +6,35 @@ import { MovieList } from '../MovieList';
 
 import './results.scss';
 
-export const Results = () => (
-  <main className="results">
-    <div className="wrapper">
-      <div className="results__header">
-        <Filter />
-        <Sorting />
-      </div>
-      <MovieCount />
-      <MovieList />
-    </div>
-  </main>
-);
+import { moviesData } from '../../mockedData';
+
+export class Results extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      movies: [],
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ movies: moviesData });
+  }
+
+  render() {
+    const { movies } = this.state;
+
+    return (
+      <main className="results">
+        <div className="wrapper">
+          <div className="results__header">
+            <Filter />
+            <Sorting />
+          </div>
+          <MovieCount />
+          <MovieList movies={movies} />
+        </div>
+      </main>
+    );
+  }
+}

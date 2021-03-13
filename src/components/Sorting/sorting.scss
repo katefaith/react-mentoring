@@ -1,9 +1,18 @@
+@import './../../sass/abstracts/variables.scss';
+
 .sorting {
     text-transform: uppercase;
 
+    span {
+        opacity: 0.5;
+    }
+
     select {
         margin-left: 10px;
-        color:black;
+        padding: 10px;
+        border: none;
+        background-color: $color-dark;
         text-transform: uppercase;
+        color: $color-white;
     }
 }

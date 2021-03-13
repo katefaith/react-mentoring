@@ -8,7 +8,7 @@ export const Sorting = () => (
   <div className="sorting">
     <span>sort by</span>
     <select>
-      {sortingItems.map((item) => <option value={item}>{item}</option>)}
+      {sortingItems.map((item) => <option value={item} key={item}>{item}</option>)}
     </select>
   </div>
 );
