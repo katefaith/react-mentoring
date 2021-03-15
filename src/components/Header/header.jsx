@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
+import { MovieDetails } from '../MovieDetails';
 import { Modal } from '../Modal';
 import { Form } from '../Forms/Form';
+
+import { moviesData } from '../../mockedData';
 
 import './header.scss';
 
@@ -22,7 +25,8 @@ export const Header = () => {
             + add movie
           </button>
         </div>
-        <Search />
+        {/* <Search /> */}
+        <MovieDetails movie={moviesData[0]} />
       </div>
 
       {isAddModalOpen && (

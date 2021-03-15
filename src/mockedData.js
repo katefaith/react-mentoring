@@ -5,6 +5,7 @@ export const sortingItems = ['release date', 'rating'];
 export const moviesData = [
   {
     title: '500 Days of Summer',
+    rating: '7.7',
     year: '2009',
     imdbID: 'tt1022603',
     poster: 'https://m.media-amazon.com/images/M/MV5BMTk5MjM4OTU1OV5BMl5BanBnXkFtZTcwODkzNDIzMw@@._V1_SX300.jpg',
@@ -15,6 +16,7 @@ export const moviesData = [
   },
   {
     title: 'I Know What You Did Last Summer',
+    rating: '5.7',
     year: '1997',
     imdbID: 'tt0119345',
     poster: 'https://m.media-amazon.com/images/M/MV5BZDI4ODJlNGUtNjFiMy00ODgzLWIzYjgtMzgyZTljZDQ2NGZiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
@@ -25,6 +27,7 @@ export const moviesData = [
   },
   {
     title: 'The Kings of Summer',
+    rating: '7.1',
     year: '2013',
     imdbID: 'tt2179116',
     poster: 'https://m.media-amazon.com/images/M/MV5BMTc3ODA1NTI0MV5BMl5BanBnXkFtZTcwOTE4OTUzOQ@@._V1_SX300.jpg',
@@ -35,6 +38,7 @@ export const moviesData = [
   },
   {
     title: 'Spring, Summer, Fall, Winter... and Spring',
+    rating: '8.0',
     year: '2003',
     imdbID: 'tt0374546',
     poster: 'https://m.media-amazon.com/images/M/MV5BZGYxOTRlM2MtNWRjZS00NDk2LWExM2EtMDFiYTgyMGJkZGYyXkEyXkFqcGdeQXVyMTA1NTM1NDI2._V1_SX300.jpg',
@@ -45,6 +49,7 @@ export const moviesData = [
   },
   {
     title: 'I Still Know What You Did Last Summer',
+    rating: '4.7',
     year: '1998',
     imdbID: 'tt0130018',
     poster: 'https://m.media-amazon.com/images/M/MV5BYTgwZmFkZmQtZTVjNC00ZTU4LWI4NjItYzdhYTg1ZjkyODZhXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg',
