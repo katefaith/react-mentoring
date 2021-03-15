@@ -9,7 +9,7 @@ import './movieCard.scss';
 import menuIcon from '../../images/more.svg';
 import closeIcon from '../../images/cancel.svg';
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, selectMovie }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuBtnShown, setIsMenuBtnShown] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -35,6 +35,7 @@ export const MovieCard = ({ movie }) => {
       className="movie-card"
       onMouseEnter={() => setIsMenuBtnShown(true)}
       onMouseLeave={onMouseLeave}
+      onClick={selectMovie}
     >
       {isMenuBtnShown && (
         <button
@@ -92,6 +93,7 @@ MovieCard.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
   }),
+  selectMovie: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {

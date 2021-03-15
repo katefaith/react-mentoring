@@ -19,4 +19,14 @@
         text-transform: uppercase;
         font-weight: 700;
     }
+
+    &__search-button {
+        border: none;
+        background-color: transparent;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
 }
