@@ -45,6 +45,10 @@ export const Header = ({ selectedMovie, setSelectedMovie }) => {
 };
 
 Header.propTypes = {
-  selectedMovie: PropTypes.shape().isRequired,
-  setSelectedMovie: PropTypes.shape().isRequired,
+  selectedMovie: PropTypes.shape(),
+  setSelectedMovie: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  selectedMovie: null,
 };

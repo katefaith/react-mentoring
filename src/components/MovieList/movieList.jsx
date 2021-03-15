@@ -10,7 +10,7 @@ export const MovieList = ({ movies, setSelectedMovie }) => (
       <MovieCard
         movie={movie}
         key={movie.imdbID}
-        selectMovie={() => setSelectedMovie(movie)}
+        setSelectedMovie={setSelectedMovie}
       />
     ))}
   </div>
