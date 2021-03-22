@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
 import { DeleteForm } from '../Forms/DeleteForm';
@@ -9,11 +9,16 @@ import './movieCard.scss';
 import menuIcon from '../../images/more.svg';
 import closeIcon from '../../images/cancel.svg';
 
-export const MovieCard = ({ movie }) => {
+export const MovieCard = ({ movie, setSelectedMovie }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuBtnShown, setIsMenuBtnShown] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const memoizedSelectdMovie = useCallback(
+    () => setSelectedMovie(movie),
+    [movie],
+  );
 
   const onMouseLeave = () => {
     setIsMenuBtnShown(false);
@@ -35,6 +40,7 @@ export const MovieCard = ({ movie }) => {
       className="movie-card"
       onMouseEnter={() => setIsMenuBtnShown(true)}
       onMouseLeave={onMouseLeave}
+      onClick={memoizedSelectdMovie}
     >
       {isMenuBtnShown && (
         <button
@@ -92,6 +98,7 @@ MovieCard.propTypes = {
     genre: PropTypes.string.isRequired,
     year: PropTypes.string.isRequired,
   }),
+  setSelectedMovie: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {

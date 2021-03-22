@@ -1,0 +1,40 @@
+@import './../../sass/abstracts/variables.scss';
+
+.movie-details {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    color: $color-white;
+
+    &__row {
+        display: flex;
+        align-items: center;
+    }
+
+    &__content {
+        margin-left: 50px;
+    }
+
+    &__rating {
+        display: flex;
+        justify-content: center;
+        margin-left: 30px;
+        width: 70px;
+        height: 70px;
+        align-items: center;
+        border: 2px solid rgba($color-white, 0.5);
+        border-radius: 50%;
+        color: cadetblue;
+        font-size: 1.3em;
+    }
+
+    &__year,
+    &__runtime {
+        color: $color-primary;
+        font-size: 1.5em;
+    }
+
+    &__runtime {
+        margin-left: 30px;
+    }
+}
