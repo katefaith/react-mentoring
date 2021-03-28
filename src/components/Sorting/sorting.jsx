@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMovies } from '../../redux/movies/actions';
+import { getMovies, setSortParam } from '../../redux/movies/actions';
 
 import './sorting.scss';
 
@@ -19,6 +19,7 @@ export const Sorting = () => {
   const handleChange = (event) => {
     const sortParam = dictionary[event.target.value];
     dispatch(getMovies(request, sortParam));
+    dispatch(setSortParam(sortParam));
   };
 
   return (
