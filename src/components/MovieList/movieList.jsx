@@ -9,7 +9,7 @@ export const MovieList = ({ movies, setSelectedMovie }) => (
     {movies.map((movie) => (
       <MovieCard
         movie={movie}
-        key={movie.imdbID}
+        key={movie.id}
         setSelectedMovie={setSelectedMovie}
       />
     ))}
