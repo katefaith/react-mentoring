@@ -7,15 +7,15 @@ import './form.scss';
 import { filterItems } from '../../mockedData';
 
 export const Form = ({
-  title, movie, id, btnText,
+  title, movie, btnText,
 }) => (
   <form className="form">
     <h1 className="form__title">{title}</h1>
 
-    {id && (
+    {movie && (
       <div className="form__field">
         <label className="form__label" htmlFor="id">Movie ID</label>
-        <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={id} />
+        <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={movie.id} />
       </div>
     )}
 
@@ -61,14 +61,13 @@ export const Form = ({
 Form.propTypes = {
   title: PropTypes.string.isRequired,
   movie: PropTypes.shape({
-    imdbID: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     poster: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
     plot: PropTypes.string.isRequired,
     runtime: PropTypes.string.isRequired,
   }),
-  id: PropTypes.string,
   btnText: PropTypes.string.isRequired,
 };
 
@@ -81,5 +80,4 @@ Form.defaultProps = {
     plot: '',
     runtime: '',
   },
-  id: '',
 };

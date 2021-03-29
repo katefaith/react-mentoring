@@ -24,10 +24,10 @@ export const Filter = () => {
       <input id="all" type="radio" name="filter" onChange={handleChange} defaultChecked value="" />
       <label htmlFor="all">all</label>
       {filterItems.map((item) => (
-        <>
+        <React.Fragment key={item}>
           <input id={item} type="radio" name="filter" onChange={handleChange} value={item} />
           <label htmlFor={item} key={item}>{item}</label>
-        </>
+        </React.Fragment>
       ))}
     </div>
   );
