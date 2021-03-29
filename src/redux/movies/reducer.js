@@ -5,6 +5,7 @@ const initialState = {
   isFetching: false,
   request: '',
   sortParam: 'release_date',
+  filterParam: '',
 };
 
 export const moviesReducer = (state = initialState, action) => {
@@ -19,6 +20,8 @@ export const moviesReducer = (state = initialState, action) => {
       return { ...state, request: action.request };
     case MoviesActionsTypes.SET_SORT_PARAM:
       return { ...state, sortParam: action.sortParam };
+    case MoviesActionsTypes.SET_FILTER_PARAM:
+      return { ...state, filterParam: action.filterParam };
     default:
       return state;
   }

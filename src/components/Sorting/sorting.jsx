@@ -1,11 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies, setSortParam } from '../../redux/movies/actions';
+import { getCurrentRequest, getCurrentFilterParam } from '../../redux/movies/selectors';
+import { sortingItems } from '../../mockedData';
 
 import './sorting.scss';
-
-import { sortingItems } from '../../mockedData';
-import { getCurrentRequest } from '../../redux/movies/selectors';
 
 const dictionary = {
   rating: 'vote_average',
@@ -15,10 +14,11 @@ const dictionary = {
 export const Sorting = () => {
   const dispatch = useDispatch();
   const request = useSelector(getCurrentRequest);
+  const filterParam = useSelector(getCurrentFilterParam);
 
   const handleChange = (event) => {
     const sortParam = dictionary[event.target.value];
-    dispatch(getMovies(request, sortParam));
+    dispatch(getMovies(request, sortParam, filterParam));
     dispatch(setSortParam(sortParam));
   };
 

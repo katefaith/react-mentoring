@@ -1,9 +1,10 @@
 import { MoviesActionsTypes } from './types';
 
-export const getMovies = (request, sortParam) => ({
+export const getMovies = (request, sortParam, filterParam) => ({
   type: MoviesActionsTypes.GET_MOVIES,
   request,
   sortParam,
+  filterParam,
 });
 
 export const getMoviesStart = () => ({
@@ -28,4 +29,9 @@ export const setCurrentRequest = (request) => ({
 export const setSortParam = (sortParam) => ({
   type: MoviesActionsTypes.SET_SORT_PARAM,
   sortParam,
+});
+
+export const setFilterParam = (filterParam) => ({
+  type: MoviesActionsTypes.SET_FILTER_PARAM,
+  filterParam,
 });

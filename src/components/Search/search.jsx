@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies, setCurrentRequest } from '../../redux/movies/actions';
-import { getCurrentSortParam } from '../../redux/movies/selectors';
+import { getCurrentSortParam, getCurrentFilterParam } from '../../redux/movies/selectors';
 
 import './search.scss';
 
@@ -9,10 +9,11 @@ export const Search = () => {
   const [request, setRequest] = useState('');
   const dispatch = useDispatch();
   const sortParam = useSelector(getCurrentSortParam);
+  const filterParam = useSelector(getCurrentFilterParam);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getMovies(request, sortParam));
+    dispatch(getMovies(request, sortParam, filterParam));
     dispatch(setCurrentRequest(request));
   };
 
