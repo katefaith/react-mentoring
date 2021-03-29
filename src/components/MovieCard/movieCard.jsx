@@ -78,7 +78,7 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
       {isEditModalOpen && (
       <Modal closeModal={() => setIsEditModalOpen(false)}>
-        <Form title="edit movie" movie={movie} btnText="save" />
+        <Form title="edit movie" btnText="save" currentMovie={movie} />
       </Modal>
       )}
 

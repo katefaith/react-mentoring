@@ -4,7 +4,7 @@ import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { MovieDetails } from '../MovieDetails';
 import { Modal } from '../Modal';
-import { AddForm } from '../Forms/AddForm';
+import { Form } from '../Forms/Form';
 
 import searchIcon from '../../images/search.svg';
 
@@ -37,7 +37,7 @@ export const Header = ({ selectedMovie, setSelectedMovie }) => {
 
       {isAddModalOpen && (
       <Modal closeModal={() => setIsAddModalOpen(false)}>
-        <AddForm title="add movie" btnText="submit" />
+        <Form title="add movie" btnText="submit" />
       </Modal>
       )}
     </header>

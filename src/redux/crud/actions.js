@@ -9,3 +9,8 @@ export const deleteMovie = (id) => ({
   type: crudActionsTypes.DELETE_MOVIE,
   payload: id,
 });
+
+export const editMovie = (movie) => ({
+  type: crudActionsTypes.EDIT_MOVIE,
+  payload: movie,
+});
