@@ -1,11 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './movieCount.scss';
 
-export const MovieCount = () => (
+export const MovieCount = ({ moviesCount }) => (
   <p className="movie-count">
-    <span>5</span>
+    <span>{moviesCount}</span>
     {' '}
     movies found
   </p>
 );
+
+MovieCount.propTypes = {
+  moviesCount: PropTypes.number.isRequired,
+};

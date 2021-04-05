@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
 import { DeleteForm } from '../Forms/DeleteForm';
 import { Form } from '../Forms/Form';
+import { getYear, printGenres } from '../../utils';
 
 import './movieCard.scss';
 
@@ -64,26 +65,26 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
       <img
         className="movie-card__image"
-        src={movie.poster}
+        src={movie.poster_path}
         alt={movie.title}
       />
       <div className="movie-card__info">
         <div className="movie-card__descr">
           <h2 className="movie-card__title">{movie.title}</h2>
-          <p className="movie-card__genre">{movie.genre}</p>
+          <p className="movie-card__genre">{printGenres(movie.genres)}</p>
         </div>
-        <div className="movie-card__release-date">{movie.year}</div>
+        <div className="movie-card__release-date">{getYear(movie.release_date)}</div>
       </div>
 
       {isEditModalOpen && (
       <Modal closeModal={() => setIsEditModalOpen(false)}>
-        <Form title="edit movie" movie={movie} btnText="save" />
+        <Form title="edit movie" btnText="save" currentMovie={movie} />
       </Modal>
       )}
 
       {isDeleteModalOpen && (
       <Modal closeModal={() => setIsDeleteModalOpen(false)}>
-        <DeleteForm id={movie.imdbID} />
+        <DeleteForm id={movie.id} />
       </Modal>
       )}
     </div>
@@ -92,21 +93,21 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    imdbID: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    release_date: PropTypes.string.isRequired,
   }),
   setSelectedMovie: PropTypes.func.isRequired,
 };
 
 MovieCard.defaultProps = {
   movie: {
-    imdbID: 'Missing ID',
+    id: 'Missing ID',
     title: 'Missing Title',
-    poster: 'Missing Poster',
-    genre: 'Missing Genre',
-    year: 'Missing Year',
+    poster_path: 'Missing Poster',
+    genres: 'Missing Genre',
+    release_date: 'Missing Year',
   },
 };

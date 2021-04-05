@@ -8,6 +8,11 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 2px solid $color-gray-light;
+        border-bottom: 3px solid $color-gray-light;
+    }
+
+    &__warning {
+        text-align: center;
+        font-size: 4rem;
     }
 }

@@ -1,4 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
+
 import { Header } from './Header';
 import { ErrorBoundary } from './ErrorBoundary';
 import { Results } from './Results';
@@ -6,21 +9,16 @@ import { Footer } from './Footer';
 
 import './App.scss';
 
-import { moviesData } from '../mockedData';
-
 export const App = () => {
   const [selectedMovie, setSelectedMovie] = useState(null);
-  const [movies, setMovies] = useState([]);
-
-  useEffect(() => setMovies(moviesData), []);
 
   return (
-    <>
+    <Provider store={store}>
       <Header selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />
       <ErrorBoundary>
-        <Results movies={movies} setSelectedMovie={setSelectedMovie} />
+        <Results setSelectedMovie={setSelectedMovie} />
       </ErrorBoundary>
       <Footer />
-    </>
+    </Provider>
   );
 };

@@ -1,4 +1,4 @@
-export const filterItems = ['all', 'documentary', 'comedy', 'horror', 'crime'];
+export const filterItems = ['Documentary', 'Comedy', 'Horror', 'Crime', 'Drama'];
 
 export const sortingItems = ['release date', 'rating'];
 

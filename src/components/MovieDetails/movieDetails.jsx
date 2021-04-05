@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getYear, printGenres } from '../../utils';
 
 import './movieDetails.scss';
 
@@ -7,36 +8,38 @@ export const MovieDetails = ({ movie }) => (
   <div className="movie-details">
     <div className="movie-details__image">
       <img
-        src={movie.poster}
+        src={movie.poster_path}
         alt={movie.title}
       />
     </div>
     <div className="movie-details__content">
       <div className="movie-details__row">
         <h1 className="movie-details__title">{movie.title}</h1>
-        <div className="movie-details__rating">{movie.rating}</div>
+        <div className="movie-details__rating">{movie.vote_average}</div>
       </div>
-      <p className="movie-details__director">{movie.director}</p>
+      <p className="movie-details__genres">{printGenres(movie.genres)}</p>
       <div className="movie-details__row">
-        <span className="movie-details__year">{movie.year}</span>
-        <span className="movie-details__runtime">{movie.runtime}</span>
+        <span className="movie-details__year">{getYear(movie.release_date)}</span>
+        <span className="movie-details__runtime">
+          {movie.runtime}
+          {' '}
+          min
+        </span>
       </div>
-      <p className="movie-details__plot">{movie.plot}</p>
+      <p className="movie-details__plot">{movie.overview}</p>
     </div>
   </div>
 );
 
 MovieDetails.propTypes = {
   movie: PropTypes.shape({
-    imdbID: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    poster: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    runtime: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    poster_path: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    release_date: PropTypes.string.isRequired,
+    runtime: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
   }),
 };
 
@@ -44,12 +47,11 @@ MovieDetails.defaultProps = {
   movie: {
     imdbID: 'Missing ID',
     title: 'Missing Title',
-    rating: 'Missing Rating',
-    poster: 'Missing Poster',
-    genre: 'Missing Genre',
-    year: 'Missing Year',
-    director: 'Missing Director',
+    vote_average: 'Missing Rating',
+    poster_path: 'Missing Poster',
+    genres: 'Missing Genre',
+    release_date: 'Missing Year',
     runtime: 'Missing Runtime',
-    plot: 'Missing Plot',
+    overview: 'Missing Overview',
   },
 };

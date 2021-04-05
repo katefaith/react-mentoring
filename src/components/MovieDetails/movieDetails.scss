@@ -6,6 +6,12 @@
     margin-bottom: 50px;
     color: $color-white;
 
+    &__image img {
+        width: 300px;
+        height: 460px;
+        object-fit: fill;
+    }
+
     &__row {
         display: flex;
         align-items: center;
