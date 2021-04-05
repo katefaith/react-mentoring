@@ -1,10 +1,13 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { Formik, Form, Field } from 'formik';
+import * as Yup from 'yup';
 
 import { filterItems } from '../../mockedData';
 import { addMovie, editMovie } from '../../redux/crud/actions';
+import { Input } from './Input';
 
 import './form.scss';
 
@@ -18,89 +21,61 @@ const initialMovie = {
   runtime: '',
 };
 
-export const Form = ({ title, btnText, currentMovie }) => {
+const Schema = Yup.object().shape({
+  title: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
+  release_date: Yup.string(),
+  poster_path: Yup.string().url('Invalid URL').required('Required'),
+  genres: Yup.array().of(Yup.string()).required('Required'),
+  tagline: Yup.string(),
+  overview: Yup.string().required('Required'),
+  runtime: Yup.number().moreThan(0, 'Must be more than 0').required('Required'),
+});
+
+export const MovieForm = ({ title, btnText, currentMovie }) => {
   const dispatch = useDispatch();
-  const [movie, setMovie] = useState(currentMovie || initialMovie);
-
-  const handleInputChange = (event) => {
-    const name = event.target.id;
-    const value = (event.target.id === 'runtime') ? +event.target.value : event.target.value;
-    setMovie({ ...movie, [name]: value });
-  };
-
-  const handleSelectChange = (event) => {
-    const name = event.target.id;
-    const value = [event.target.value];
-    setMovie({ ...movie, [name]: value });
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (currentMovie) {
-      dispatch(editMovie(movie));
-    } else {
-      dispatch(addMovie(movie));
-    }
-  };
 
   return (
-    <form className="form" onSubmit={handleSubmit}>
-      <h1 className="form__title">{title}</h1>
+    <Formik
+      initialValues={currentMovie || initialMovie}
+      validationSchema={Schema}
+      onSubmit={(values) => {
+        if (currentMovie) {
+          dispatch(editMovie(values));
+        } else {
+          dispatch(addMovie(values));
+        }
+      }}
+    >
+      {({ errors, touched }) => (
+        <Form className="form">
+          <h1 className="form__title">{title}</h1>
 
-      {currentMovie && (
-        <div className="form__field">
-          <label className="form__label" htmlFor="id">Movie ID</label>
-          <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={movie.id} />
-        </div>
+          {currentMovie && <Input id="id" name="id" placeholder="Movie ID" label="Movie ID" errors={errors} touched={touched} />}
+          <Input id="title" name="title" placeholder="Movie Title" label="Title" errors={errors} touched={touched} />
+          <Input type="date" id="release_date" name="release_date" placeholder="Select Date" label="Release date" errors={errors} touched={touched} />
+          <Input id="poster_path" name="poster_path" placeholder="Movie URL here" label="Movie Url" errors={errors} touched={touched} />
+          <div className="form__field">
+            <label className="form__label" htmlFor="genres">Genre</label>
+            <Field component="select" multiple className="form__select" id="genres" name="genres">
+              {filterItems.map((item) => <option value={item} key={item}>{item}</option>)}
+            </Field>
+            {errors.genres && touched.genres && (<div className="form__error">{errors.genres}</div>)}
+          </div>
+          <Input id="tagline" name="tagline" placeholder="Tagline here" label="Tagline" errors={errors} touched={touched} />
+          <Input id="overview" name="overview" placeholder="Overview here" label="Overview" errors={errors} touched={touched} />
+          <Input type="number" id="runtime" name="runtime" placeholder="Runtime here" label="Runtime" errors={errors} touched={touched} />
+
+          <div className="form__buttons">
+            <button className="form__button  form__button--reset" type="reset">reset</button>
+            <button className="form__button  form__button--submit" type="submit">{btnText}</button>
+          </div>
+        </Form>
       )}
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="title">Title</label>
-        <input className="form__input" type="text" id="title" onChange={handleInputChange} placeholder="Movie Title" value={movie.title} />
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="release-date">Release date</label>
-        <input className="form__input" type="date" id="release_date" onChange={handleInputChange} placeholder="Select Date" value={movie.release_date} />
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="poster_path">Movie Url</label>
-        <input className="form__input" type="text" id="poster_path" onChange={handleInputChange} placeholder="Movie URL here" value={movie.poster_path} />
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="genres">Genre</label>
-        <select className="form__select" id="genres" onChange={handleSelectChange} value={movie.genres[0]}>
-          <option>Select Genre</option>
-          {filterItems.map((item) => <option value={item} key={item}>{item}</option>)}
-        </select>
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="tagline">Tagline</label>
-        <input className="form__input" type="text" id="tagline" onChange={handleInputChange} placeholder="Tagline here" value={movie.tagline} />
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="overview">Overview</label>
-        <input className="form__input" type="text" id="overview" onChange={handleInputChange} placeholder="Overview here" value={movie.overview} />
-      </div>
-
-      <div className="form__field">
-        <label className="form__label" htmlFor="runtime">Runtime</label>
-        <input className="form__input" type="text" id="runtime" onChange={handleInputChange} placeholder="Runtime here" value={movie.runtime} />
-      </div>
-
-      <div className="form__buttons">
-        <button className="form__button  form__button--reset" type="reset">reset</button>
-        <button className="form__button  form__button--submit" type="submit">{btnText}</button>
-      </div>
-    </form>
+    </Formik>
   );
 };
 
-Form.propTypes = {
+MovieForm.propTypes = {
   title: PropTypes.string.isRequired,
   // eslint-disable-next-line react/require-default-props
   currentMovie: PropTypes.shape({
