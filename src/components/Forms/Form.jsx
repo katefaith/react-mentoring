@@ -13,6 +13,7 @@ const initialMovie = {
   release_date: '',
   poster_path: '',
   genres: [''],
+  tagline: '',
   overview: '',
   runtime: '',
 };
@@ -46,7 +47,7 @@ export const Form = ({ title, btnText, currentMovie }) => {
     <form className="form" onSubmit={handleSubmit}>
       <h1 className="form__title">{title}</h1>
 
-      {movie && (
+      {currentMovie && (
         <div className="form__field">
           <label className="form__label" htmlFor="id">Movie ID</label>
           <input className="form__input" type="text" id="id" placeholder="Movie ID" disabled value={movie.id} />
@@ -77,6 +78,11 @@ export const Form = ({ title, btnText, currentMovie }) => {
       </div>
 
       <div className="form__field">
+        <label className="form__label" htmlFor="tagline">Tagline</label>
+        <input className="form__input" type="text" id="tagline" onChange={handleInputChange} placeholder="Tagline here" value={movie.tagline} />
+      </div>
+
+      <div className="form__field">
         <label className="form__label" htmlFor="overview">Overview</label>
         <input className="form__input" type="text" id="overview" onChange={handleInputChange} placeholder="Overview here" value={movie.overview} />
       </div>
@@ -96,6 +102,7 @@ export const Form = ({ title, btnText, currentMovie }) => {
 
 Form.propTypes = {
   title: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
   currentMovie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
@@ -105,15 +112,4 @@ Form.propTypes = {
     runtime: PropTypes.number.isRequired,
   }),
   btnText: PropTypes.string.isRequired,
-};
-
-Form.defaultProps = {
-  currentMovie: {
-    id: 0,
-    title: '',
-    poster_path: '',
-    genres: [''],
-    overview: '',
-    runtime: 0,
-  },
 };

@@ -6,7 +6,7 @@ import { sortingItems } from '../../mockedData';
 
 import './sorting.scss';
 
-const dictionary = {
+const sortParams = {
   rating: 'vote_average',
   'release date': 'release_date',
 };
@@ -17,7 +17,7 @@ export const Sorting = () => {
   const filterParam = useSelector(getCurrentFilterParam);
 
   const handleChange = (event) => {
-    const sortParam = dictionary[event.target.value];
+    const sortParam = sortParams[event.target.value];
     dispatch(getMovies(request, sortParam, filterParam));
     dispatch(setSortParam(sortParam));
   };

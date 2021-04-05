@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { put, call } from 'redux-saga/effects';
 import { getMoviesError, getMoviesFinish, getMoviesStart } from './actions';
+import { API } from '../../constants';
 
 async function fetchMovies(request, sortParam, filterParam) {
-  const response = await axios.get(`http://localhost:4000/movies?sortBy=${sortParam}&sortOrder=desc&search=${request}&searchBy=title&filter=${filterParam}`);
+  const response = await axios.get(`${API}/movies?sortBy=${sortParam}&sortOrder=desc&search=${request}&searchBy=title&filter=${filterParam}`);
   return response.data;
 }
 
