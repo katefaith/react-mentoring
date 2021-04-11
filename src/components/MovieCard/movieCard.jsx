@@ -1,8 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Modal } from '../Modal';
-import { DeleteForm } from '../Forms/DeleteForm';
-import { Form } from '../Forms/Form';
+import { DeleteForm } from '../Forms/deleteForm';
+import { MovieForm } from '../Forms/Form';
 import { getYear, printGenres } from '../../utils';
 
 import './movieCard.scss';
@@ -78,7 +78,7 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
       {isEditModalOpen && (
       <Modal closeModal={() => setIsEditModalOpen(false)}>
-        <Form title="edit movie" btnText="save" currentMovie={movie} />
+        <MovieForm title="edit movie" btnText="save" currentMovie={movie} />
       </Modal>
       )}
 
