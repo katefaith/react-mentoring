@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { useField } from 'formik';
 
 export const Input = ({
-  id, label, ...props
+  id, label, errors, touched, ...props
 }) => {
   const [field] = useField(props);
 
   return (
     <div className="form__field">
       <label className="form__label" htmlFor={id}>{label}</label>
-      <input className="form__input" {...field} {...props} />
-      {props.errors[id] && props.touched[id] && (<div className="form__error">{props.errors[id]}</div>)}
+      <input className="form__input" id={id} {...field} {...props} />
+      {errors[id] && touched[id] && (<div className="form__error">{errors[id]}</div>)}
     </div>
   );
 };

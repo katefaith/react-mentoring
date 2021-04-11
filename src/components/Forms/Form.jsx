@@ -50,7 +50,7 @@ export const MovieForm = ({ title, btnText, currentMovie }) => {
         <Form className="form">
           <h1 className="form__title">{title}</h1>
 
-          {currentMovie && <Input id="id" name="id" placeholder="Movie ID" label="Movie ID" errors={errors} touched={touched} />}
+          {currentMovie && <Input id="id" name="id" placeholder="Movie ID" label="Movie ID" errors={errors} touched={touched} disabled />}
           <Input id="title" name="title" placeholder="Movie Title" label="Title" errors={errors} touched={touched} />
           <Input type="date" id="release_date" name="release_date" placeholder="Select Date" label="Release date" errors={errors} touched={touched} />
           <Input id="poster_path" name="poster_path" placeholder="Movie URL here" label="Movie Url" errors={errors} touched={touched} />
