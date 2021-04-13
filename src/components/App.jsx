@@ -17,6 +17,9 @@ export const App = () => (
         <Route path="/film/:id">
           <SearchPage />
         </Route>
+        <Route path="/search/:request">
+          <SearchPage />
+        </Route>
         <Route path="*">
           <NotFoundPage />
         </Route>
