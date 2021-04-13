@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { store } from '../redux/store';
 
-import { Header } from './Header';
-import { ErrorBoundary } from './ErrorBoundary';
-import { Results } from './Results';
-import { Footer } from './Footer';
-
 import './App.scss';
+import { SearchPage } from '../pages/SearchPage';
+import { NotFoundPage } from '../pages/NotFoundPage';
 
-export const App = () => {
-  const [selectedMovie, setSelectedMovie] = useState(null);
-
-  return (
-    <Provider store={store}>
-      <Header selectedMovie={selectedMovie} setSelectedMovie={setSelectedMovie} />
-      <ErrorBoundary>
-        <Results setSelectedMovie={setSelectedMovie} />
-      </ErrorBoundary>
-      <Footer />
-    </Provider>
-  );
-};
+export const App = () => (
+  <Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <SearchPage />
+        </Route>
+        <Route path="*">
+          <NotFoundPage />
+        </Route>
+      </Switch>
+    </Router>
+  </Provider>
+);
