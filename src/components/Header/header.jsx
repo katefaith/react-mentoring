@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Logo } from '../Logo';
 import { Search } from '../Search';
 import { MovieDetails } from '../MovieDetails';
@@ -19,9 +20,9 @@ export const Header = ({ selectedMovie, setSelectedMovie }) => {
         <div className="header__container">
           <Logo />
           {selectedMovie ? (
-            <button className="header__search-button" type="button" onClick={() => setSelectedMovie(null)}>
+            <Link to="/" className="header__search-button" onClick={() => setSelectedMovie(null)}>
               <img src={searchIcon} alt="search" />
-            </button>
+            </Link>
           ) : (
             <button
               className="header__add-button"
