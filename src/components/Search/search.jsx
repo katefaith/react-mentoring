@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRouteMatch } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMovies, setCurrentRequest } from '../../redux/movies/actions';
 import { getCurrentSortParam, getCurrentFilterParam } from '../../redux/movies/selectors';
@@ -12,6 +13,14 @@ export const Search = () => {
   const dispatch = useDispatch();
   const sortParam = useSelector(getCurrentSortParam);
   const filterParam = useSelector(getCurrentFilterParam);
+  const { searchRequest } = useRouteMatch().params;
+
+  useEffect(() => {
+    if (searchRequest) {
+      dispatch(getMovies(searchRequest, sortParam, filterParam));
+      dispatch(setCurrentRequest(searchRequest));
+    }
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -28,6 +37,7 @@ export const Search = () => {
           className="search__input"
           type="text"
           placeholder="What do you want to watch?"
+          required
           onChange={(event) => setRequest(event.target.value)}
         />
         <button className="search__button" type="submit">search</button>
