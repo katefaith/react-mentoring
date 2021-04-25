@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Modal } from '../Modal';
 import { DeleteForm } from '../Forms/deleteForm';
 import { MovieForm } from '../Forms/Form';
@@ -41,7 +42,6 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
       className="movie-card"
       onMouseEnter={() => setIsMenuBtnShown(true)}
       onMouseLeave={onMouseLeave}
-      onClick={memoizedSelectdMovie}
     >
       {isMenuBtnShown && (
         <button
@@ -70,7 +70,9 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
       />
       <div className="movie-card__info">
         <div className="movie-card__descr">
-          <h2 className="movie-card__title">{movie.title}</h2>
+          <Link to={`/film/${movie.id}`} onClick={memoizedSelectdMovie}>
+            <h2 className="movie-card__title">{movie.title}</h2>
+          </Link>
           <p className="movie-card__genre">{printGenres(movie.genres)}</p>
         </div>
         <div className="movie-card__release-date">{getYear(movie.release_date)}</div>

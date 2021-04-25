@@ -21,7 +21,11 @@ export const Results = ({ setSelectedMovie }) => {
           <Filter />
           <Sorting />
         </div>
-        <MovieCount moviesCount={moviesCount} />
+        {moviesCount > 0 ? (
+          <MovieCount moviesCount={moviesCount} />
+        ) : (
+          <p className="results__warning">No movies found</p>
+        )}
         {isLoading ? (
           <p className="results__warning">Loading...</p>
         ) : (

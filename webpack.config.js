@@ -6,6 +6,9 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  output: {
+    publicPath: '/',
+  },
   module: {
     rules: [
       {

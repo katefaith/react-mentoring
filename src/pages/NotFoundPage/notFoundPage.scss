@@ -1,0 +1,28 @@
+@import './../../sass/abstracts/variables.scss';
+
+.not-found-page-header,
+.not-found-page-main {
+    background-color: $color-black;
+}
+
+.not-found-page-main {
+    img {
+        display: block;
+        width: 70%;
+    }
+}
+
+.not-found-page-link {
+    padding: 15px 20px;
+    border: 2px solid $color-primary;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $color-primary;
+}
+
+.not-found-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
