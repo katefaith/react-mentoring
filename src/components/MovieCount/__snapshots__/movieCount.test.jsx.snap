@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot test render MovieCount correctly 1`] = `
+exports[`MovieCount render  correctly 1`] = `
 <div>
   <p
     class="movie-count"
