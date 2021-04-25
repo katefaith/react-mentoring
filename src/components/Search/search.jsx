@@ -13,7 +13,7 @@ export const Search = () => {
   const dispatch = useDispatch();
   const sortParam = useSelector(getCurrentSortParam);
   const filterParam = useSelector(getCurrentFilterParam);
-  const { searchRequest } = useRouteMatch().params;
+  const { params: searchRequest } = useRouteMatch();
 
   useEffect(() => {
     if (searchRequest) {
