@@ -1,10 +1,12 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Modal } from '../Modal';
 import { DeleteForm } from '../Forms/deleteForm';
 import { MovieForm } from '../Forms/Form';
 import { getYear, printGenres } from '../../utils';
+import { editMovie } from '../../redux/crud/actions';
 
 import './movieCard.scss';
 
@@ -16,6 +18,7 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
   const [isMenuBtnShown, setIsMenuBtnShown] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const dispatch = useDispatch();
 
   const memoizedSelectdMovie = useCallback(
     () => setSelectedMovie(movie),
@@ -35,6 +38,10 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
   const showDeleteModal = () => {
     setIsDeleteModalOpen(true);
     setIsMenuOpen(false);
+  };
+
+  const onSubmit = (values) => {
+    dispatch(editMovie(values));
   };
 
   return (
@@ -80,7 +87,7 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
       {isEditModalOpen && (
       <Modal closeModal={() => setIsEditModalOpen(false)}>
-        <MovieForm title="edit movie" btnText="save" currentMovie={movie} />
+        <MovieForm title="edit movie" btnText="save" currentMovie={movie} onSubmit={onSubmit} />
       </Modal>
       )}
 
