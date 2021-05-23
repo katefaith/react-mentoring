@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { hot } from 'react-hot-loader';
-import { store } from '../redux/store';
 
 import { SearchPage } from '../pages/SearchPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
-const App = ({ Router, location, context }) => (
+const App = ({
+  Router, location, context, store,
+}) => (
   <Provider store={store}>
     <Router location={location} context={context}>
       <Switch>
@@ -35,6 +36,10 @@ App.propTypes = {
   context: PropTypes.shape({
     url: PropTypes.string,
   }),
+  store: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+  }).isRequired,
 };
 App.defaultProps = {
   location: null,

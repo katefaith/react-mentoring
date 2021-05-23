@@ -6,12 +6,16 @@ import { rootSaga } from './rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(
-  rootReducer,
-  compose(
-    applyMiddleware(sagaMiddleware),
-    // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  ),
-);
+export default (initialState) => {
+  const store = createStore(
+    rootReducer,
+    initialState,
+    compose(
+      applyMiddleware(sagaMiddleware),
+      // window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    ),
+  );
 
-sagaMiddleware.run(rootSaga);
+  sagaMiddleware.run(rootSaga);
+  return store;
+};

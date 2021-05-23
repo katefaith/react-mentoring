@@ -4,7 +4,9 @@ import { StaticRouter } from 'react-router-dom';
 
 import App from './components/App';
 
-function renderHTML(html) {
+import configureStore from './redux/store';
+
+function renderHTML(html, preloadedState) {
   return `
         <!doctype html>
         <html>
@@ -15,6 +17,11 @@ function renderHTML(html) {
           </head>
           <body>
             <div id="app-root">${html}</div>
+            <script>
+              // WARNING: See the following for security issues around embedding JSON in HTML:
+              // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
+              window.PRELOADED_STATE = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
+            </script>
             <div id="modal-root"></div>
             <script src="/js/main.js"></script>
           </body>
@@ -24,19 +31,21 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
   return (req, res) => {
+    const store = configureStore();
     // This context object contains the results of the render
     const context = {};
 
-    const root = (
+    const renderRoot = () => (
       // eslint-disable-next-line react/jsx-filename-extension
       <App
         context={context}
         location={req.url}
         Router={StaticRouter}
+        store={store}
       />
     );
 
-    const htmlString = renderToString(root);
+    renderToString(renderRoot());
 
     // context.url will contain the URL to redirect to if a <Redirect> was used
     if (context.url) {
@@ -47,6 +56,9 @@ export default function serverRenderer() {
       return;
     }
 
-    res.send(renderHTML(htmlString));
+    const htmlString = renderToString(renderRoot());
+    const preloadedState = store.getState();
+
+    res.send(renderHTML(htmlString, preloadedState));
   };
 }
