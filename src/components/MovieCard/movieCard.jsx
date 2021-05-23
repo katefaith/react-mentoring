@@ -8,7 +8,7 @@ import { MovieForm } from '../Forms/Form';
 import { getYear, printGenres } from '../../utils';
 import { editMovie } from '../../redux/crud/actions';
 
-import './movieCard.scss';
+import styles from './movieCard.css';
 
 import menuIcon from '../../images/more.svg';
 import closeIcon from '../../images/cancel.svg';
@@ -46,13 +46,13 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
 
   return (
     <div
-      className="movie-card"
+      className={styles.movieCard}
       onMouseEnter={() => setIsMenuBtnShown(true)}
       onMouseLeave={onMouseLeave}
     >
       {isMenuBtnShown && (
         <button
-          className="movie-card__menu-btn"
+          className={styles.menuBtn}
           type="button"
           onClick={() => setIsMenuOpen(true)}
         >
@@ -61,28 +61,28 @@ export const MovieCard = ({ movie, setSelectedMovie }) => {
       )}
 
       {isMenuOpen && (
-        <div className="movie-card__menu">
-          <button className="movie-card__menu-close-btn" type="button" onClick={() => setIsMenuOpen(false)}>
+        <div className={styles.menu}>
+          <button className={styles.menuCloseBtn} type="button" onClick={() => setIsMenuOpen(false)}>
             <img src={closeIcon} alt="close" />
           </button>
-          <button className="movie-card__menu-item" type="button" onClick={showEditModal}>Edit</button>
-          <button className="movie-card__menu-item" type="button" onClick={showDeleteModal}>Delete</button>
+          <button className={styles.menuItem} type="button" onClick={showEditModal}>Edit</button>
+          <button className={styles.menuItem} type="button" onClick={showDeleteModal}>Delete</button>
         </div>
       )}
 
       <img
-        className="movie-card__image"
+        className={styles.image}
         src={movie.poster_path}
         alt={movie.title}
       />
-      <div className="movie-card__info">
-        <div className="movie-card__descr">
+      <div className={styles.info}>
+        <div className={styles.descr}>
           <Link to={`/film/${movie.id}`} onClick={memoizedSelectdMovie}>
-            <h2 className="movie-card__title">{movie.title}</h2>
+            <h2 className={styles.title}>{movie.title}</h2>
           </Link>
-          <p className="movie-card__genre">{printGenres(movie.genres)}</p>
+          <p>{printGenres(movie.genres)}</p>
         </div>
-        <div className="movie-card__release-date">{getYear(movie.release_date)}</div>
+        <div className={styles.releaseDate}>{getYear(movie.release_date)}</div>
       </div>
 
       {isEditModalOpen && (

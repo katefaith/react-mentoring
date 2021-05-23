@@ -1,0 +1,16 @@
+.sorting {
+    text-transform: uppercase;
+}
+
+.sorting span {
+    opacity: 0.5;
+}
+
+.sorting select {
+    margin-left: 10px;
+    padding: 10px;
+    border: none;
+    background-color: #232323;
+    text-transform: uppercase;
+    color: #ffffff;
+}

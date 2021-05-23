@@ -1,0 +1,26 @@
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+}
+
+.input {
+    border-radius: 5px;
+    padding: 18px;
+    background-color: #424242;
+    border: 1px solid #424242;
+    color: #ffffff;
+}
+
+.input[disabled] {
+    background-color: transparent;
+    border: none;
+}
+
+
+.label {
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    color: #f65261;
+    font-weight: 700;
+}

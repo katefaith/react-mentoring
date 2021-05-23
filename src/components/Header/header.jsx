@@ -11,7 +11,7 @@ import { addMovie } from '../../redux/crud/actions';
 
 import searchIcon from '../../images/search.svg';
 
-import './header.scss';
+import styles from './header.css';
 
 export const Header = ({ selectedMovie, setSelectedMovie }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -22,17 +22,17 @@ export const Header = ({ selectedMovie, setSelectedMovie }) => {
   };
 
   return (
-    <header className="header">
-      <div className="wrapper">
-        <div className="header__container">
+    <header className={styles.header}>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
           <Logo />
           {selectedMovie ? (
-            <Link to="/" className="header__search-button" onClick={() => setSelectedMovie(null)}>
+            <Link to="/" className={styles.searchButton} onClick={() => setSelectedMovie(null)}>
               <img src={searchIcon} alt="search" />
             </Link>
           ) : (
             <button
-              className="header__add-button"
+              className={styles.addButton}
               type="button"
               onClick={() => setIsAddModalOpen(true)}
             >

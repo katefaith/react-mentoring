@@ -7,7 +7,7 @@ import { MovieCount } from '../MovieCount';
 import { MovieList } from '../MovieList';
 import { getMoviesCount, getMovies, getIsFetching } from '../../redux/movies/selectors';
 
-import './results.scss';
+import styles from './results.css';
 
 export const Results = ({ setSelectedMovie }) => {
   const moviesCount = useSelector(getMoviesCount);
@@ -15,19 +15,19 @@ export const Results = ({ setSelectedMovie }) => {
   const isLoading = useSelector(getIsFetching);
 
   return (
-    <main className="results">
-      <div className="wrapper">
-        <div className="results__header">
+    <main className={styles.results}>
+      <div className={styles.wrapper}>
+        <div className={styles.header}>
           <Filter />
           <Sorting />
         </div>
         {moviesCount > 0 ? (
           <MovieCount moviesCount={moviesCount} />
         ) : (
-          <p className="results__warning">No movies found</p>
+          <p className={styles.warning}>No movies found</p>
         )}
         {isLoading ? (
-          <p className="results__warning">Loading...</p>
+          <p className={styles.warning}>Loading...</p>
         ) : (
           <MovieList movies={movies} setSelectedMovie={setSelectedMovie} />
         )}

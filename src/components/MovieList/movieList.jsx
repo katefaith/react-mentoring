@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { MovieCard } from '../MovieCard';
 
-import './movieList.scss';
+import styles from './movieList.css';
 
 export const MovieList = ({ movies, setSelectedMovie }) => (
-  <div className="movie-list">
+  <div className={styles.movieList}>
     {movies.map((movie) => (
       <MovieCard
         movie={movie}

@@ -1,0 +1,37 @@
+.header {
+    /* background: linear-gradient(rgba(#000000, 0.6), rgba(#000000, 0.7)), url('../../images/bg.jpg'); */
+    background-color: #000000;
+    border-bottom: 10px solid #555555;
+}
+
+.wrapper {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.addButton {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(#555555, 0.8);
+    color: #f65261;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.searchButton {
+    border: none;
+    background-color: transparent;
+}
+
+.searchButton img {
+    width: 30px;
+    height: 30px;
+}

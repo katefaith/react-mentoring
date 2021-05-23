@@ -1,0 +1,44 @@
+.details {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    color: #ffffff;
+}
+
+.image img {
+    width: 300px;
+    height: 460px;
+    object-fit: fill;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.content {
+    margin-left: 50px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-left: 30px;
+    width: 70px;
+    height: 70px;
+    align-items: center;
+    border: 2px solid rgba(#ffffff, 0.5);
+    border-radius: 50%;
+    color: cadetblue;
+    font-size: 1.3em;
+}
+
+.year,
+.runtime {
+    color: #f65261;
+    font-size: 1.5em;
+}
+
+.runtime {
+    margin-left: 30px;
+}

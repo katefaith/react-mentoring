@@ -2,22 +2,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 
-import './modal.scss';
+import styles from './modal.css';
 
 import closeIcon from '../../images/cancel.svg';
 
 export const Modal = ({ closeModal, children }) => {
   const modal = (
-    <div className="modal">
-      <div className="modal__wrapper">
+    <div className={styles.modal}>
+      <div className={styles.wrapper}>
         <button
-          className="modal__close-btn"
+          className={styles.closeBtn}
           type="button"
           onClick={closeModal}
         >
           <img src={closeIcon} alt="close" />
         </button>
-        <div className="modal__content">
+        <div className={styles.content}>
           {children}
         </div>
       </div>

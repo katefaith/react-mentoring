@@ -1,15 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { store } from '../redux/store';
+import { Switch, Route } from 'react-router-dom';
+import { hot } from 'react-hot-loader';
 
-import './App.scss';
 import { SearchPage } from '../pages/SearchPage';
 import { NotFoundPage } from '../pages/NotFoundPage';
 
-export const App = () => (
+const App = ({
+  Router, location, context, store,
+}) => (
   <Provider store={store}>
-    <Router>
+    <Router location={location} context={context}>
       <Switch>
         <Route exact path="/">
           <SearchPage />
@@ -27,3 +29,21 @@ export const App = () => (
     </Router>
   </Provider>
 );
+
+App.propTypes = {
+  Router: PropTypes.func.isRequired,
+  location: PropTypes.string,
+  context: PropTypes.shape({
+    url: PropTypes.string,
+  }),
+  store: PropTypes.shape({
+    dispatch: PropTypes.func.isRequired,
+    getState: PropTypes.func.isRequired,
+  }).isRequired,
+};
+App.defaultProps = {
+  location: null,
+  context: null,
+};
+
+export default hot(module)(App);
