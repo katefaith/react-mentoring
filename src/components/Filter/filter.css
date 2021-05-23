@@ -1,0 +1,33 @@
+.filter {
+    display: flex;
+    margin-left: -10px;
+}
+
+.input {
+    display: none;
+}
+
+.input:checked + .label {
+    position: relative;
+}
+
+.input:checked + .label:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -23px;
+    width: 100%;
+    height: 3px;
+    background-color: #f65261;
+}
+
+.label {
+    margin: 20px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.label:hover {
+    color: #f65261;
+}

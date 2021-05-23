@@ -1,14 +1,20 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = {
-  entry: './src/index.jsx',
+  mode: process.env.NODE_ENV,
+
+  output: {
+    filename: 'js/[name].js',
+    path: path.resolve('./public'),
+  },
+
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
-  output: {
-    publicPath: '/',
-  },
+
   module: {
     rules: [
       {
@@ -17,14 +23,6 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
-      },
-      {
-        test: /\.html$/,
-        use: ['html-loader'],
       },
       {
         test: /\.(png|svg|jpe?g|gif)$/,
@@ -40,10 +38,4 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-    }),
-    new CleanWebpackPlugin(),
-  ],
 };

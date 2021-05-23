@@ -4,7 +4,7 @@ import { getMovies, setSortParam } from '../../redux/movies/actions';
 import { getCurrentRequest, getCurrentFilterParam } from '../../redux/movies/selectors';
 import { sortingItems } from '../../mockedData';
 
-import './sorting.scss';
+import styles from './sorting.css';
 
 const sortParams = {
   rating: 'vote_average',
@@ -23,7 +23,7 @@ export const Sorting = () => {
   };
 
   return (
-    <div className="sorting">
+    <div className={styles.sorting}>
       <span>sort by</span>
       <select onChange={handleChange}>
         {sortingItems.map((item) => <option value={item} key={item}>{item}</option>)}

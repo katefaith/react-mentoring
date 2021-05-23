@@ -6,23 +6,23 @@ import { Footer } from '../../components/Footer';
 
 import notFoundImage from '../../images/404.jpg';
 
-import './notFoundPage.scss';
+import styles from './notFoundPage.css';
 
 export const NotFoundPage = () => (
-  <>
-    <header className="not-found-page-header">
-      <div className="wrapper">
+  <div className={styles.page}>
+    <header className={styles.header}>
+      <div className={styles.wrapper}>
         <Logo />
       </div>
     </header>
-    <main className="not-found-page-main">
-      <div className="wrapper">
-        <div className="not-found-page-container">
+    <main className={styles.main}>
+      <div className={styles.wrapper}>
+        <div className={styles.container}>
           <img src={notFoundImage} alt="notFoundImage" />
-          <Link to="/" className="not-found-page-link">go back to home</Link>
+          <Link to="/" className={styles.link}>go back to home</Link>
         </div>
       </div>
     </main>
     <Footer />
-  </>
+  </div>
 );

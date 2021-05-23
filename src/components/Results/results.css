@@ -1,0 +1,29 @@
+.results {
+    background-color: #232323;
+    color: #ffffff;
+}
+
+.wrapper {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #555555;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #555555;
+}
+
+.warning {
+    text-align: center;
+    font-size: 4rem;
+}

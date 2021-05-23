@@ -2,31 +2,31 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getYear, printGenres } from '../../utils';
 
-import './movieDetails.scss';
+import styles from './movieDetails.css';
 
 export const MovieDetails = ({ movie }) => (
-  <div className="movie-details">
-    <div className="movie-details__image">
+  <div className={styles.details}>
+    <div className={styles.image}>
       <img
         src={movie.poster_path}
         alt={movie.title}
       />
     </div>
-    <div className="movie-details__content">
-      <div className="movie-details__row">
-        <h1 className="movie-details__title">{movie.title}</h1>
-        <div className="movie-details__rating">{movie.vote_average}</div>
+    <div className={styles.content}>
+      <div className={styles.row}>
+        <h1>{movie.title}</h1>
+        <div className={styles.rating}>{movie.vote_average}</div>
       </div>
-      <p className="movie-details__genres">{printGenres(movie.genres)}</p>
-      <div className="movie-details__row">
-        <span className="movie-details__year">{getYear(movie.release_date)}</span>
-        <span className="movie-details__runtime">
+      <p>{printGenres(movie.genres)}</p>
+      <div className={styles.row}>
+        <span className={styles.year}>{getYear(movie.release_date)}</span>
+        <span className={styles.runtime}>
           {movie.runtime}
           {' '}
           min
         </span>
       </div>
-      <p className="movie-details__plot">{movie.overview}</p>
+      <p>{movie.overview}</p>
     </div>
   </div>
 );

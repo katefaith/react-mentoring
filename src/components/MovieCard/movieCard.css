@@ -1,0 +1,85 @@
+.movieCard {
+    position: relative;
+    width: 300px;
+    margin: 0 25px 30px;
+}
+
+.menuBtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 8px;
+    border: none;
+    border-radius: 50%;
+    background-color: #232323;
+}
+
+.menuBtn:hover {
+    background-color: rgba(#232323, 0.9);
+}
+
+.menuBtn img {
+    display: block;
+    width: 20px;
+    height: 20px;
+}
+
+.menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    padding-bottom: 10px;
+    background-color: #232323;
+}
+
+.menu button {
+    background-color: transparent;
+    border: none;
+}
+
+.menuItem {
+    width: 100%;
+    text-align: start;
+    padding: 10px 20px;
+}
+
+.menuItem:hover {
+    background-color: #f65261;
+}
+
+.menuCloseBtn {
+    align-self: flex-end;
+    padding: 8px;
+}
+
+.menuCloseBtn img {
+    width: 10px;
+    align-self: flex-end;
+}
+
+.image {
+    margin-bottom: 15px;
+    width: 300px;
+    height: 460px;
+    object-fit: fill;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.title {
+    margin-top: 0;
+}
+
+.releaseDate {
+    padding: 5px 10px;
+    border: 1px solid #555555;
+    border-radius: 3px;
+}

@@ -1,0 +1,36 @@
+.search {
+    width: 90%;
+    margin: 0 auto;
+    margin-bottom: 120px;
+}
+
+.title {
+    margin: 40px 0;
+    font-weight: 500;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.form {
+    display: flex;
+}
+
+.input {
+    flex-grow: 1;
+    margin-right: 10px;
+    border-radius: 5px;
+    padding: 18px;
+    background-color: #424242;
+    border: 1px solid #424242;
+    color: #ffffff;
+}
+
+.button {
+    width: 220px;
+    padding: 18px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f65261;
+    color: #ffffff;
+    text-transform: uppercase;
+}

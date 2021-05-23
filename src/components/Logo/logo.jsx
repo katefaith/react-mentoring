@@ -1,10 +1,10 @@
 import React from 'react';
 
-import './logo.scss';
+import styles from './logo.css';
 
 export const Logo = () => (
-  <p className="logo">
-    <span>netflix</span>
+  <p className={styles.logo}>
+    <span className={styles.span}>netflix</span>
     roulette
   </p>
 );

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './movieCount.scss';
+import styles from './movieCount.css';
 
 export const MovieCount = ({ moviesCount }) => (
-  <p className="movie-count">
+  <p className={styles.movieCount}>
     <span>{moviesCount}</span>
     {' '}
     movies found

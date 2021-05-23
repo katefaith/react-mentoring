@@ -7,7 +7,7 @@ import * as Yup from 'yup';
 import { filterItems } from '../../mockedData';
 import { Input } from './Input';
 
-import './form.scss';
+import styles from './form.css';
 
 const initialMovie = {
   title: '',
@@ -38,27 +38,27 @@ export const MovieForm = ({
     onSubmit={onSubmit}
   >
     {({ errors, touched }) => (
-      <Form className="form">
-        <h1 className="form__title">{title}</h1>
+      <Form className={styles.form}>
+        <h1 className={styles.title}>{title}</h1>
 
         {currentMovie && <Input id="id" name="id" placeholder="Movie ID" label="Movie ID" errors={errors} touched={touched} disabled />}
         <Input id="title" name="title" placeholder="Movie Title" label="Title" errors={errors} touched={touched} />
         <Input type="date" id="release_date" name="release_date" placeholder="Select Date" label="Release date" errors={errors} touched={touched} />
         <Input id="poster_path" name="poster_path" placeholder="Movie URL here" label="Movie Url" errors={errors} touched={touched} />
-        <div className="form__field">
-          <label className="form__label" htmlFor="genres">Genre</label>
-          <Field component="select" multiple className="form__select" id="genres" name="genres">
+        <div className={styles.field}>
+          <label className={styles.label} htmlFor="genres">Genre</label>
+          <Field component="select" multiple className={styles.select} id="genres" name="genres">
             {filterItems.map((item) => <option value={item} key={item}>{item}</option>)}
           </Field>
-          {errors.genres && touched.genres && (<div className="form__error">{errors.genres}</div>)}
+          {errors.genres && touched.genres && (<div>{errors.genres}</div>)}
         </div>
         <Input id="tagline" name="tagline" placeholder="Tagline here" label="Tagline" errors={errors} touched={touched} />
         <Input id="overview" name="overview" placeholder="Overview here" label="Overview" errors={errors} touched={touched} />
         <Input type="number" id="runtime" name="runtime" placeholder="Runtime here" label="Runtime" errors={errors} touched={touched} />
 
-        <div className="form__buttons">
-          <button className="form__button  form__button--reset" type="reset">reset</button>
-          <button className="form__button  form__button--submit" type="submit">{btnText}</button>
+        <div className={styles.buttons}>
+          <button className={styles.buttonReset} type="reset">reset</button>
+          <button className={styles.buttonSubmit} type="submit">{btnText}</button>
         </div>
       </Form>
     )}

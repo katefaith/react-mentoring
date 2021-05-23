@@ -1,0 +1,36 @@
+.page {
+    display: flex;
+    flex-direction: column;
+}
+
+.header,
+.main {
+    background-color:#000000;
+}
+
+.wrapper {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.main img {
+    display: block;
+    width: 70%;
+}
+
+.link {
+    padding: 15px 20px;
+    border: 2px solid #f65261;
+    border-radius: 5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f65261;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 100px;
+}
